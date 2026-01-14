@@ -1,0 +1,17 @@
+{
+  "name": "thanisorn-automation-test",
+  "version": "1.0.0",
+  "description": "Automation test project with Python scripts and Playwright tests",
+  "scripts": {
+    "test": "playwright test",
+    "test:login": "playwright test No2/login.spec.js",
+    "test:api": "playwright test No3/api.spec.js",
+    "test:all": "playwright test No2 No3"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}

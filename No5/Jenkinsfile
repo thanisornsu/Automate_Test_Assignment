@@ -1,0 +1,55 @@
+pipeline {
+    agent any
+
+    environment {
+        // Git Repository
+        GIT_REPO = 'https://github.com/xxxx/playwright-automation.git'
+        GIT_BRANCH = 'main'
+        
+        // Test Configuration
+        REPORT_DIR = 'playwright-report'
+        TEST_RESULTS = 'test-results'
+    }
+
+    stages {
+        stage('Checkout Code From Git') {
+            steps {
+                echo "Checking out code from Git: ${GIT_REPO} (branch: ${GIT_BRANCH})"
+                checkout scm
+            }
+        }
+
+        stage('Run Test Automate') {
+            steps {
+                echo 'Installing dependencies...'
+                sh 'npm install'
+                
+                echo 'Installing Playwright browsers...'
+                sh 'npx playwright install --with-deps'
+                
+                echo "Running Playwright tests (results will be in ${TEST_RESULTS}, report in ${REPORT_DIR})..."
+                sh 'npm test'
+            }
+        }
+
+        stage('Send Result To Jenkins') {
+            steps {
+                echo "Publishing test results from ${REPORT_DIR}..."
+                echo "Test results directory: ${TEST_RESULTS}"
+                // Test results are automatically displayed in Jenkins console
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline execution completed.'
+        }
+        success {
+            echo 'All tests passed successfully! ✅'
+        }
+        failure {
+            echo 'Tests failed. Please check the logs. ❌'
+        }
+    }
+}

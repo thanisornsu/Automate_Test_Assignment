@@ -1,0 +1,68 @@
+# Test Results
+tests/results/
+*.html
+*.xml
+*.log
+*.png
+*.jpg
+*.jpeg
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db
+desktop.ini
+
+# Appium
+appium.log
+*.log
+
+# Android
+*.apk
+*.aab
+*.keystore
+
+# Build files
+build/
+dist/
+*.egg-info/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Jenkins
+.jenkins/
+
+# Coverage reports
+.coverage
+htmlcov/
+.pytest_cache/
